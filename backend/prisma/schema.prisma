@@ -15,6 +15,7 @@ model products {
   title String
   name String @unique
   stock Int @default(0)
+  price Int
   image String?
   orders order_items[]
 }
@@ -35,5 +36,5 @@ model order_items {
   order orders @relation(fields: [order_id],references: [id])
   product products @relation(fields: [product_id],references: [id])
   quantity Int
-  price_per_unit BigInt
+  price_per_unit Int
 }

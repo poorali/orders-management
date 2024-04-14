@@ -1,18 +1,24 @@
 const express = require('express')
 const {lang} = require("./locales/messages");
+const {PrismaClient} = require("@prisma/client");
 const app = express()
 app.use(express.json())
 const port = 5000
 require('dotenv').config()
 
+const prisma = new PrismaClient()
 //Home Page Route
 app.get('/', (req,res) => {
     return res.json({message: lang('WelcomeMessage')})
 })
 
 //Get the list of products to show in orders create and edit
-app.get('/products', (req,res) => {
-    return res.json({message: "Products List"})
+app.get('/products', async (req,res) => {
+    const products =  await prisma.products.findMany();
+    return res.json({
+        status: "success",
+        products: await prisma.products.findMany()
+    })
 })
 
 //List of orders
