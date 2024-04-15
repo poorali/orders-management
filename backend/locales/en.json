@@ -1,3 +1,7 @@
 {
-  "WelcomeMessage": "Orders API V1"
+  "WelcomeMessage": "Orders API V1",
+  "ItemInvalidError": "The selected item is invalid",
+  "ItemStockError": "The selected item is out of stock",
+  "NotHandledException": "An error has occurred, please try again later",
+  "OrdersCreateSuccess": "The order has successfully created"
 }

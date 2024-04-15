@@ -1,6 +1,12 @@
 const express = require('express')
 const {lang} = require("./locales/messages");
 const {PrismaClient} = require("@prisma/client");
+const validate = require("./middlewares/yup");
+const CreateRequest = require("./requests/orders/CreateRequest")
+const useOrderModel = require("./models/order")
+
+
+const order = useOrderModel()
 const app = express()
 app.use(express.json())
 const port = 5000
@@ -27,8 +33,13 @@ app.get('/orders', (req,res) => {
 })
 
 //Create new order
-app.post('/orders/create', (req,res) => {
-    return res.json({message: "Orders Create"})
+app.post('/orders/create', validate(CreateRequest),async(req, res) => {
+    const savedOrder = await order.create(req.body)
+
+    if((await savedOrder).status === 'error'){
+        return res.status(400).json(savedOrder)
+    }
+    return res.json(savedOrder)
 })
 
 //Get the details of a specific order
