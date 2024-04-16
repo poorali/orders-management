@@ -3,5 +3,8 @@
   "ItemInvalidError": "The selected item is invalid",
   "ItemStockError": "The selected item is out of stock",
   "NotHandledException": "An error has occurred, please try again later",
-  "OrdersCreateSuccess": "The order has successfully created"
+  "OrdersCreateSuccess": "The order has successfully created",
+  "OrdersEditSuccess": "The order has successfully updated",
+  "OrdersDeleteSuccess": "The order has successfully deleted",
+  "NotFound": "Record Not Found"
 }
