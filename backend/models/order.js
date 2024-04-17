@@ -74,7 +74,7 @@ const useOrderModel = () => {
             pagination: {
                 currentPage: page,
                 perPage,
-                totalPages: Math.ceil(totalOrders / perPage),
+                lastPage: Math.ceil(totalOrders / perPage),
             },
         };
     }
