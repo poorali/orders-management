@@ -43,11 +43,11 @@ const useOrderModel = () => {
     }
 
 
-    const getList = async (search = '', page = 1, perPage = 10) => {
+    const getList = async (search = '', page = 1, perPage = 5) => {
         // Sanitize user input for search term to prevent injection attacks
         const sanitizedSearch = search?.trim();
 
-        const whereClause = sanitizedSearch
+        let whereClause = sanitizedSearch
             ? {
                 OR: [
                     {customer_name: {contains: sanitizedSearch}},
@@ -56,6 +56,8 @@ const useOrderModel = () => {
             }
             : {};
 
+        /// Merge where clause with default query conditions
+        whereClause = {...{is_deleted: false}, ...whereClause}
         const skip = (page - 1) * perPage;
         const take = perPage;
 
@@ -64,7 +66,7 @@ const useOrderModel = () => {
             skip,
             take,
             include: {items: true},
-            orderBy: {id: 'asc'},
+            orderBy: {id: 'desc'},
         });
 
         const totalOrders = await prisma.orders.count({where: whereClause});

@@ -1,14 +1,18 @@
 const express = require('express')
+const cors = require('cors')
 const {lang} = require("./locales/messages");
 const {PrismaClient} = require("@prisma/client");
 const validate = require("./middlewares/yup");
 const CreateRequest = require("./requests/orders/CreateRequest")
 const useOrderModel = require("./models/order")
-
+const corsConfig = require('./configs/cors')
 
 const order = useOrderModel()
 const app = express()
 app.use(express.json())
+app.use(cors(corsConfig))
+
+
 const port = 5000
 require('dotenv').config()
 

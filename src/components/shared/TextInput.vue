@@ -2,6 +2,7 @@
 import { toRef } from "vue";
 import { useField } from "vee-validate";
 
+const model = defineModel()
 const props = defineProps({
   type: {
     type: String,
@@ -47,7 +48,7 @@ const { value: inputValue, errorMessage, handleBlur, handleChange, meta } = useF
       {{ label }}
     </label>
     <input
-        v-model="inputValue"
+        v-model="model"
         :type="type"
         :id="name"
         :name="name"

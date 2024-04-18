@@ -4,7 +4,7 @@ type EndpointResponseType = {
     errors: object;
 }
 
-type EndpointResponsePaginateType = EndpointResponseType & { paginate: PaginateType }
+type EndpointResponsePaginateType = EndpointResponseType & { pagination: PaginateType }
 
 type PaginateType = {
     currentPage: number,

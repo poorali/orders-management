@@ -1,4 +1,21 @@
 {
+    "OrdersListDescription": "Navigate Orders",
     "Orders": "Orders",
-    "SuperAdmin": "Admin Panel"
+    "SuperAdmin": "Admin Panel",
+    "Loading": "Loading",
+    "OrderId": "Order ID #",
+    "Row": "Row",
+    "Date": "Date",
+    "Items": "Items",
+    "Actions": "Actions",
+    "CustomerName": "Customer Name",
+    "OrdersEdit": "Edit Order",
+    "OrdersView": "View Order",
+    "OrdersCreate": "Create an Order",
+    "CustomerAddress": "Customer Address",
+    "NoRecord": "There is no record available!",
+    "SearchOrder": "Search orders by name or address",
+    "OrdersViewDescription": "View Order Details",
+    "OrdersEditDescription": "Edit Order Details",
+    "OrdersCreateDescription": "Submit a new Order"
 }
