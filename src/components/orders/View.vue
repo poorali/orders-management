@@ -1,5 +1,6 @@
 <template>
   <main class="flex flex-col">
+    <div class="bg-green-300 p-4 mb-4 rounded" v-if="orderStore.message">{{orderStore.message}}</div>
     <div v-if="order" class="flex items-start flex-col md:flex-row">
       <div class="w-full md:w-8/12 p-10 mr-4 bg-white border-2 rounded">
         <div class="flex flex-wrap justify-between">
@@ -34,7 +35,7 @@
 
 <script lang="ts" setup>
 import {lang} from "@/locales/messages";
-import {onMounted, ref} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 import type {OrderItemType, OrderType} from "@/types/OrderTypes";
 import {useOrderStore} from "@/stores/order";
 import TextInput from "@/components/shared/TextInput.vue";
@@ -59,4 +60,5 @@ onMounted(() => {
     order.value = r
   })
 })
+onBeforeUnmount(() => orderStore.message = '')
 </script>

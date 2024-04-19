@@ -3,7 +3,7 @@
 const props = defineProps<{color: string, textColor?: string, title: string, value: any}>()
 </script>
 <template>
-  <div :class="`decoration-0 flex items-center justify-center text-center rounded-md p-6 bg-${color} text-${textColor}`">
+  <div :class="`decoration-0 flex items-center justify-center text-center rounded-md p-6 bg-${color} text-${textColor || 'white'}`">
     <div :class="'bg-' + color">
       <slot name="icon"></slot>
       <div :class="'text-xs capitalize font-bold mt-3 text-' + textColor" v-text="title"></div>

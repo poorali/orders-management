@@ -7,6 +7,9 @@ const {service} = useAxios({});
 
 const baseUrl = `/orders`;
 export const useOrderStore = defineStore('order', {
+    state: () => ({
+        message: <string>''
+    }),
     actions: {
         async getList(page: number = 1, search: String) {
             const {data}: { data: OrderListType } = await service.get(baseUrl, {

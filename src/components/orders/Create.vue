@@ -29,6 +29,9 @@ const submit = (values: object, {setErrors}:any) => {
   loading.value = true;
   orderStore.create(values)
       .then(r => {
+        if(r.message){
+          orderStore.message = r.message
+        }
         router.push({name: 'OrdersView', params: {id: r.order.id}})
       })
       .catch(error => {
