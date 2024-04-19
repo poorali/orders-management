@@ -39,14 +39,16 @@ onMounted(() => {
 })
 
 const submit = (values: object, {setErrors}: any) => {
-  loading.value = true;
-  orderStore.edit(order.value?.id, values)
-      .then(r => {
-        router.push({name: 'OrdersView', params: {id: r.order.id}})
-      })
-      .catch(error => {
-        setErrors(error.errors)
-      })
-      .finally(() => loading.value = false)
+  if(order.value && order.value.id){
+    loading.value = true;
+    orderStore.edit(order.value.id, values)
+        .then(r => {
+          router.push({name: 'OrdersView', params: {id: r.order.id}})
+        })
+        .catch(error => {
+          setErrors(error.errors)
+        })
+        .finally(() => loading.value = false)
+  }
 }
 </script>

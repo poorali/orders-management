@@ -59,6 +59,7 @@ import type {ProductType} from "@/types/ProductTypes";
 import TextInput from "@/components/shared/TextInput.vue";
 import {useField} from "vee-validate";
 import {beautify} from "@/utils/helpers/errors";
+import {formatPrice} from "@/utils/helpers/number";
 
 const {errorMessage, resetField} = useField(toRef('items'))
 const props = defineProps<{ items?: OrderItemType[] }>()
@@ -78,10 +79,6 @@ const productAdded = (product: ProductType) => {
 
 const productRemoved = (product: Partial<ProductType>) => {
   itemsRef.value = itemsRef.value.filter(item => item.product_id !== product.id)
-}
-
-const formatPrice = (number: number) => {
-  return new Intl.NumberFormat().format(number)
 }
 
 watch(itemsRef, () => resetField())

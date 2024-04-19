@@ -22,6 +22,8 @@
     "CustomerName": "Customer Name",
     "OrdersEdit": "Edit Order",
     "OrdersView": "View Order",
+    "TotalPrice": "Total Price",
+    "TotalQuantity": "Total Quantity",
     "OrdersCreate": "Create an Order",
     "CustomerAddress": "Customer Address",
     "NoRecord": "There is no record available!",
