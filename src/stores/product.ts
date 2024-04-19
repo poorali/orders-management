@@ -1,7 +1,6 @@
 import {defineStore} from "pinia";
 import useAxios from "@/plugins/axios";
 import type {ProductListType, ProductType} from "@/types/ProductTypes";
-
 const {service} = useAxios({});
 
 const baseUrl = `/products`;

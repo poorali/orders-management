@@ -16,7 +16,7 @@ const useProductModel = () => {
                 let counter = 0;
                 const products = await Promise.all(
                     Object.keys(items).map(async (index) => {
-                        const quantity = items[index]
+                        const quantity = parseInt(items[index])
                         let product = await tx.products.findUnique({
                             where: {id: parseInt(index)},
                         });
@@ -24,12 +24,10 @@ const useProductModel = () => {
                         if (!product) {
                             return stockErrors[`items[${counter}]`] = lang("ItemInvalidError")
                         }
-                        const updatedStock = quantity + (prevItems[index] ? -prevItems[index]: 0)
+                        const updatedStock = quantity + parseInt(prevItems[index] ? -prevItems[index]: 0)
                         if (updatedStock > product.stock) {
                             return stockErrors[`items[${counter}].quantity`] = lang("ItemStockError")
                         }
-
-                        //Update Stock
                         await updateStock(tx, index, updatedStock > 0 ? {decrement: Math.abs(updatedStock)}:{increment: Math.abs(updatedStock)})
                         counter++
                         return {product_id: product.id, quantity: quantity, price_per_unit: product.price}

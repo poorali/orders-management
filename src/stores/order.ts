@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import useAxios from "@/plugins/axios";
 import type {OrderCreateType, OrderListType, OrderType} from "@/types/OrderTypes";
+import type {EndpointResponseType} from "@/types/ServiceTypes";
 
 const {service} = useAxios({});
 
@@ -24,6 +25,22 @@ export const useOrderStore = defineStore('order', {
                 throw data.errors
             }
             return data;
+        },
+        async edit(id: number,order: object) {
+            const {data}: { data: OrderCreateType } = await service.post(baseUrl + '/edit/' + id,{...order})
+
+            if (data.status === 'error') {
+                throw data.errors
+            }
+            return data;
+        },
+        async show(id: string) {
+            const {data}: { data: EndpointResponseType & { order: OrderType } } = await service.get(baseUrl + '/' + id)
+
+            if (data.status === 'error') {
+                throw data.errors
+            }
+            return data.order
         },
     }
 })

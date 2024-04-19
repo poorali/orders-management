@@ -31,7 +31,7 @@ const useOrderModel = () => {
                     items: true
                 }
             }
-
+            console.log(updateStock.products)
             const order = prevOrder ? await prisma.orders.update({...body, ...{where: {id: prevOrder.id}}}) : await prisma.orders.create(body)
             if (!order) {
                 throw {general: lang('NotHandledException')}

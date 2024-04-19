@@ -17,8 +17,8 @@
       <template v-slot:item.name="{item}: {item: OrderItemFormType}">
         <td class="w-full">
           <div class="flex items-center">
-            <img :src="item.image" :alt="lang('Image')" width="30">
-            <span class="ml-4">{{ item.name }}</span>
+            <img :src="item.product?.image || item.image" :alt="lang('Image')" width="30">
+            <span class="ml-4">{{ item.product?.name || item.name }}</span>
           </div>
         </td>
       </template>

@@ -2,6 +2,8 @@
 import BaseBreadcrumb from "@/components/shared/breadcrumb/Base.vue";
 import {lang} from "@/locales/messages";
 import {ref} from "vue";
+import OrderEdit from "@/components/orders/Edit.vue"
+import router from "@/plugins/router";
 const breadcrumbs = ref([
   {
     title: lang('SuperAdmin'),
@@ -24,6 +26,6 @@ const breadcrumbs = ref([
 <template>
   <div>
     <base-breadcrumb :title="lang('OrdersEditDescription')" :breadcrumbs="breadcrumbs"></base-breadcrumb>
-    <div>This is Order Edit</div>
+    <OrderEdit :id="router.currentRoute.value.params.id"/>
   </div>
 </template>

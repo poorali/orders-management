@@ -48,7 +48,26 @@ app.post('/orders/create', validate(CreateRequest), async (req, res) => {
 
 //Get the details of a specific order
 app.get('/orders/:id', async(req, res) => {
-    const viewOrder = await prisma.orders.findUnique({where: {id: parseInt(req.params.id), is_deleted: false}, include: {items: true}})
+    const viewOrder = await prisma.orders.findUnique({
+        where: { id: parseInt(req.params.id), is_deleted: false },
+        include: {
+            items: {
+                select: {
+                    id: true,
+                    quantity: true,
+                    price_per_unit: true,
+                    product_id: true,
+                    product: {
+                        select: {
+                            id: true,
+                            name: true,
+                            image: true,
+                        },
+                    },
+                },
+            },
+        },
+    });
     if (!viewOrder) {
         return res.status(404).json({status: 'error', errors: {general: lang('NotFound')}})
     }

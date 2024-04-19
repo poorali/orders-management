@@ -1,4 +1,5 @@
 import type {EndpointResponsePaginateType} from "@/types/ServiceTypes";
+import type {ProductType} from "@/types/ProductTypes";
 
 type OrderType =  {
     id?: number;
@@ -17,6 +18,7 @@ type OrderItemType =  {
     quantity: number;
     price_per_unit: number;
     name?: string;
+    product?: ProductType
 }
 
 type OrderItemFormType = OrderItemType & {image? :string}
