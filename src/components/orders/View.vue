@@ -3,6 +3,9 @@
     <div class="bg-green-300 p-4 mb-4 rounded" v-if="orderStore.message">{{orderStore.message}}</div>
     <div v-if="order" class="flex items-start flex-col md:flex-row">
       <div class="w-full md:w-8/12 p-10 mr-4 bg-white border-2 rounded">
+        <div class="flex justify-end">
+          <Actions :item="order"/>
+        </div>
         <div class="flex flex-wrap justify-between">
           <TextInput name="customer_name" disabled v-model="order.customer_name"
                      class="w-full md:w-6/12" :label="lang('CustomerName')"/>
@@ -43,6 +46,7 @@ import DataTable from "@/components/shared/DataTable.vue";
 import type {HeaderType} from "@/types/DataTableTypes";
 import {formatPrice} from "@/utils/helpers/number";
 import Extra from "@/components/orders/Extra.vue";
+import Actions from "@/components/orders/Actions.vue";
 
 const headers: HeaderType[] = [
   {title: lang('Name'), value: 'name'},

@@ -1,4 +1,5 @@
 <template>
+  <div class="bg-green-300 p-4 mb-4 rounded" v-if="orderStore.message">{{orderStore.message}}</div>
   <main class="bg-white p-5 border-2 rounded h-96 flex flex-col">
     <TextInput name="search" v-model="search" debounce-delay="500" :placeholder="lang('SearchOrder')"/>
     <DataTable class="h-full" :headers="headers" :loading="loading" :items="list">
@@ -22,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref, watch} from "vue";
+import {onBeforeUnmount, onMounted, ref, watch} from "vue";
 import type {PaginateType} from "@/types/ServiceTypes";
 import {lang} from "@/locales/messages";
 import {debounce} from "@/utils/helpers/debounce";
@@ -59,6 +60,10 @@ const headers: HeaderType[] = [
 onMounted(() => {
   getList()
 })
+
+onBeforeUnmount(() => {
+  orderStore.message = ''
+})
 const getList = () => {
   loading.value = true
   orderStore.getList(paginate.value.currentPage, search.value).then(response => {
@@ -90,6 +95,10 @@ const updateSearch = (value: string) => {
 
 watch(search, debounce(updateSearch, 500))
 watch(() => paginate.value.currentPage, () => {
+  updateRoute()
+  getList()
+})
+watch(() => orderStore.message, () => {
   updateRoute()
   getList()
 })

@@ -31,5 +31,6 @@
     "OrdersViewDescription": "View Order Details",
     "OrdersEditDescription": "Edit Order Details",
     "OrdersCreateDescription": "Submit a new Order",
-    "ItemsRequired": "Please add at least one Item"
+    "ItemsRequired": "Please add at least one Item",
+    "DeleteConfirm": "Are you sure you want to delete this record?"
 }

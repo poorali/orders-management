@@ -45,5 +45,13 @@ export const useOrderStore = defineStore('order', {
             }
             return data.order
         },
+        async remove(id: number) {
+            const {data}: { data: EndpointResponseType & { order: OrderType } } = await service.delete(baseUrl + '/' + id)
+
+            if (data.status === 'error') {
+                throw data.errors
+            }
+            return data
+        },
     }
 })

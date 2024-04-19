@@ -1,10 +1,4 @@
 <template>
-  <div>
-    <CustomButton variant="outlined" class="hover:border-gray-700" @click="router.push({name: 'OrdersEdit', params: {id: order.id}})">
-      <img src="@/assets/icons/edit.svg" class="mr-2"/>
-      {{lang('OrdersEdit')}}
-    </CustomButton>
-  </div>
   <div class="flex mt-4">
     <InfoCard class="w-32" :title="lang('Items')" :value="order.items.length" color="red-500"/>
     <InfoCard class="w-32 ml-2" :title="lang('TotalPrice')" :value="'$'+formatPrice(order.items.reduce((acc, item) => acc + item.price_per_unit, 0))" color="amber-500"/>
@@ -19,6 +13,7 @@ import {lang} from "@/locales/messages";
 import {formatPrice} from "@/utils/helpers/number";
 import CustomButton from "@/components/shared/CustomButton.vue";;
 import {useRouter} from "vue-router";
+import Actions from "@/components/orders/Actions.vue";
 const router = useRouter()
 const props = defineProps<{order: OrderType}>()
 </script>
