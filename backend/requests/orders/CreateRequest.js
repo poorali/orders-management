@@ -3,7 +3,7 @@ const {lang} = require("../../locales/messages");
 
 
 const itemsSchema = yup.object().shape({
-    id: yup.number().required().min(1),
+    product_id: yup.number().required().min(1),
     quantity: yup.number().required().min(1).max(10)
 });
 

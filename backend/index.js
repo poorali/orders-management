@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 app.get('/products', async (req, res) => {
     return res.json({
         status: "success",
-        products: await prisma.products.findMany()
+        products: await prisma.products.findMany({where: {stock:{not:{equals: 0}}}})
     })
 })
 

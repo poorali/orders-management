@@ -7,7 +7,7 @@ const useOrderModel = () => {
     const create = async (productFormData, prevOrder = null) => {
         try {
             //Reformat items into array like this => ["id": "quantity"]
-            const items = productFormData.items.reduce((acc, item) => (acc[item.id] = item.quantity, acc), {})
+            const items = productFormData.items.reduce((acc, item) => (acc[item.product_id] = item.quantity, acc), {})
 
             //Reformat previous items into array like this => ["id": "quantity"]
             const prevOrderItems = prevOrder ? prevOrder.items.reduce((acc, item) => (acc[item.product_id] = item.quantity, acc), {}) : []

@@ -9,7 +9,7 @@
       :size="size"
       :href="to"
   >
-    <img v-if="loadingRef" src="@/assets/images/loading.svg" alt="Loading..."/>
+    <img v-if="loading" src="@/assets/images/loading.svg" alt="Loading..."/>
     <slot v-else/>
   </component>
 </template>

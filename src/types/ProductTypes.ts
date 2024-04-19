@@ -1,3 +1,4 @@
+import type {EndpointResponsePaginateType} from "@/types/ServiceTypes";
 type ProductType = {
     id: number,
     title: string;
@@ -7,4 +8,6 @@ type ProductType = {
     image?: string;
 }
 
-export type {ProductType}
+type ProductListType = EndpointResponsePaginateType & {products: ProductType[]}
+
+export type {ProductType, ProductListType}

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BaseBreadcrumb from "@/components/shared/breadcrumb/Base.vue";
+import CreateOrder from "@/components/orders/Create.vue"
 import {lang} from "@/locales/messages";
 import {ref} from "vue";
 const breadcrumbs = ref([
@@ -24,6 +25,6 @@ const breadcrumbs = ref([
 <template>
   <div>
     <base-breadcrumb :title="lang('OrdersCreateDescription')" :breadcrumbs="breadcrumbs"></base-breadcrumb>
-    <div>This is Order Create</div>
+    <CreateOrder/>
   </div>
 </template>

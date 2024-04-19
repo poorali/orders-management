@@ -26,7 +26,7 @@ const useProductModel = () => {
                         }
                         const updatedStock = quantity + (prevItems[index] ? -prevItems[index]: 0)
                         if (updatedStock > product.stock) {
-                            return stockErrors[`items[${counter}]`] = lang("ItemStockError")
+                            return stockErrors[`items[${counter}].quantity`] = lang("ItemStockError")
                         }
 
                         //Update Stock
