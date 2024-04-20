@@ -1,33 +1,59 @@
-# orders-management
 
-This template should help get you started developing with Vue 3 in Vite.
+# Orders Management
 
-## Recommended IDE Setup
+A simple orders CRUD + PDF generator
+#### (Postman Collection Included Below)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tech Stack and Plugins
 
-## Type Support for `.vue` Imports in TS
+- frontend: Typescript, Vue 3, tailwindcss, pinia, vee-validate
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- backend: Node.js, Prisma, Express, JWT, SQLITE
 
-## Customize configuration
+## Features
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Orders CRUD
+- PDF generator
+- Live pdf viewer
+- JWT Authentication
+- Pdf Customization
+- Form Validation
+- Multi lang structure in both (backend and frontend)
+- Search on orders
+- Pagination
 
-## Project Setup
 
-```sh
-npm install
+## Implemeneted Reusable Components
+
+- Custom Button
+- Data Table
+- Info Card
+- PDF Viewer & generator
+- Modal
+- Pagination
+- Text Input
+- Bread Crumb
+
+
+## Installation
+
+You can clone the project and run it locally
+
+### Backend Setup and Run
+```bash
+  cd backend  
+  npm install
+  npm start
+```
+### Frontend Setup and Run
+```bash
+  npm install
+  npm run dev
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+### Login Credentials
+```bash
+email: admin@admin.com
+password: orders
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
