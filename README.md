@@ -57,3 +57,6 @@ email: admin@admin.com
 password: orders
 ```
 
+### Postman Collection
+
+#### https://github.com/poorali/orders-management/blob/main/postman.json
