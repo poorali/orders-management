@@ -47,7 +47,6 @@ import type {HeaderType} from "@/types/DataTableTypes";
 import {formatPrice} from "@/utils/helpers/number";
 import Extra from "@/components/orders/Extra.vue";
 import Actions from "@/components/orders/Actions.vue";
-
 const headers: HeaderType[] = [
   {title: lang('Name'), value: 'name'},
   {title: lang('PricePerUnit'), value: 'price_per_unit'},

@@ -22,6 +22,11 @@ const router = createRouter({
             path: '/orders/edit/:id',
             name: 'OrdersEdit',
             component: () => import('../views/orders/Edit.vue')
+        },
+        {
+            path: '/orders/invoice/:id',
+            name: 'OrdersInvoice',
+            component: () => import('../views/orders/Invoice.vue')
         }
     ]
 })
