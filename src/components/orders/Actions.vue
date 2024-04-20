@@ -39,16 +39,4 @@ const deleteOrder = async() =>{
         .finally(() => isDeleting.value = false)
   }
 }
-const printOrder = () =>{
-  const div = document.createElement('div');
-  div.style.fontSize= "10px"
-  render(h(BlankTemplate, { order: props.item}), div);
-  console.log(div.innerHTML)
-  const doc = new jsPDF('p','pt','a4');
-  doc.html(div.innerHTML, {callback: (doc) => {
-      const blob = new Blob([doc.output()],{ type: 'application/pdf' })
-      const pdfUrl = URL.createObjectURL(blob);
-      window.location.href = pdfUrl
-    }})
-}
 </script>

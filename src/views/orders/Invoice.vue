@@ -26,6 +26,6 @@ const breadcrumbs = ref([
 <template>
   <div>
     <base-breadcrumb :title="lang('OrdersViewDescription')" :breadcrumbs="breadcrumbs"></base-breadcrumb>
-    <OrderInvoice :id="router.currentRoute.value.params.id"/>
+    <OrderInvoice :id="router.currentRoute.value.params.id.toString()"/>
   </div>
 </template>
