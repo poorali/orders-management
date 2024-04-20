@@ -45,6 +45,7 @@
       <h2 class="text-sm "><span class="mr-2 font-bold">{{ lang('CustomerAddress') }}:</span>
         {{ order.customer_address }}</h2>
     </div>
+    <div style="margin-top: 550px; margin-left: 200px">Just for check Pagination</div>
   </div>
 </template>
 
