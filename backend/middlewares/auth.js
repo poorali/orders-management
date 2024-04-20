@@ -10,7 +10,6 @@ function verifyToken(req, res, next) {
         req.id = decoded.id;
         next();
     } catch (error) {
-        console.log(error)
         res.status(401).json({ status:'error', errors: {general : lang('AccessDenied')} });
     }
 };

@@ -2,8 +2,9 @@ import {defineStore} from "pinia";
 import useAxios from "@/plugins/axios";
 import type {OrderCreateType, OrderListType, OrderType} from "@/types/OrderTypes";
 import type {EndpointResponseType} from "@/types/ServiceTypes";
+import {useAuthStore} from "@/stores/auth";
 
-const {service} = useAxios({});
+const {service} = useAxios({}, useAuthStore().token);
 
 const baseUrl = `/orders`;
 export const useOrderStore = defineStore('order', {

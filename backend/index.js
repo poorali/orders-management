@@ -21,7 +21,7 @@ require('dotenv').config()
 
 const prisma = new PrismaClient()
 //Authentication Routes
-app.post('/login', validate(LoginRequest),(req, res) => {
+app.post('/auth/login', validate(LoginRequest),(req, res) => {
     const staticUser = {id:10, email: 'admin@admin.com', password: 'orders'}
     if(req.body.email !== staticUser.email || req.body.password !== staticUser.password){
         return res.status(400).json({status: 'error', errors: {password: lang('InvalidUser')}})

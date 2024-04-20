@@ -1,7 +1,8 @@
 import {defineStore} from "pinia";
 import useAxios from "@/plugins/axios";
 import type {ProductListType, ProductType} from "@/types/ProductTypes";
-const {service} = useAxios({});
+import {useAuthStore} from "@/stores/auth";
+const {service} = useAxios({}, useAuthStore().token);
 
 const baseUrl = `/products`;
 export const useProductStore = defineStore('product', {
