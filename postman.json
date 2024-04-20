@@ -1,0 +1,1635 @@
+{
+	"info": {
+		"_postman_id": "6f995b36-ca69-4bae-992a-3d7fb420370f",
+		"name": "Orders API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26840980",
+		"_collection_link": "https://illutech.postman.co/workspace/Team-Workspace~8919d649-45b6-4d84-85e4-cfb98fd65c22/collection/26840980-6f995b36-ca69-4bae-992a-3d7fb420370f?action=share&source=collection_link&creator=26840980"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJvcmRlcnMiLCJpYXQiOjE3MTM2MTM0NTIsImV4cCI6MTcxMzYxNzA1Mn0.JrBUBfUbSVJAgjT2j5iOsM4JrnbXqFwP6cEw-ywxtr4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/products",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/products",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1207"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b7-0/9xSFRkJu6rSYcti3qMimN1jjo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Apr 2024 14:42:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"products\": [\n        {\n            \"id\": 21,\n            \"title\": \"vallum\",\n            \"name\": \"cubo\",\n            \"stock\": 8,\n            \"price\": 33880,\n            \"image\": \"https://api.multiavatar.com/aiunt.svg\"\n        },\n        {\n            \"id\": 22,\n            \"title\": \"tyrannus\",\n            \"name\": \"explicabo\",\n            \"stock\": 2,\n            \"price\": 113142,\n            \"image\": \"https://api.multiavatar.com/cubitum.svg\"\n        },\n        {\n            \"id\": 23,\n            \"title\": \"admitto\",\n            \"name\": \"baiulus\",\n            \"stock\": 7,\n            \"price\": 147225,\n            \"image\": \"https://api.multiavatar.com/testimonium.svg\"\n        },\n        {\n            \"id\": 24,\n            \"title\": \"ut\",\n            \"name\": \"decimus\",\n            \"stock\": 10,\n            \"price\": 321892,\n            \"image\": \"https://api.multiavatar.com/clibanus.svg\"\n        },\n        {\n            \"id\": 25,\n            \"title\": \"baiulus\",\n            \"name\": \"coepi\",\n            \"stock\": 7,\n            \"price\": 277895,\n            \"image\": \"https://api.multiavatar.com/caelum.svg\"\n        },\n        {\n            \"id\": 26,\n            \"title\": \"conitor\",\n            \"name\": \"tot\",\n            \"stock\": 1,\n            \"price\": 889581,\n            \"image\": \"https://api.multiavatar.com/usitas.svg\"\n        },\n        {\n            \"id\": 27,\n            \"title\": \"succedo\",\n            \"name\": \"deduco\",\n            \"stock\": 7,\n            \"price\": 195833,\n            \"image\": \"https://api.multiavatar.com/crux.svg\"\n        },\n        {\n            \"id\": 28,\n            \"title\": \"theatrum\",\n            \"name\": \"aedificium\",\n            \"stock\": 7,\n            \"price\": 424097,\n            \"image\": \"https://api.multiavatar.com/a.svg\"\n        },\n        {\n            \"id\": 29,\n            \"title\": \"tamen\",\n            \"name\": \"abduco\",\n            \"stock\": 8,\n            \"price\": 54407,\n            \"image\": \"https://api.multiavatar.com/bellum.svg\"\n        },\n        {\n            \"id\": 30,\n            \"title\": \"crux\",\n            \"name\": \"tredecim\",\n            \"stock\": 9,\n            \"price\": 280188,\n            \"image\": \"https://api.multiavatar.com/decet.svg\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\":[{\"quantity\": 3, \"product_id\":23}], // 1 < qantity <= 10 and id > 0\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/orders/create",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":1, \"id\":22},{\"quantity\": 5, \"id\":24}],\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/create",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"165-KVLELSzxQaNSXO91UTL3RHHqMRs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:09:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"The order has successfully created\",\n    \"order\": {\n        \"id\": 6,\n        \"customer_name\": \"Nima Poorali\",\n        \"customer_address\": \"address\",\n        \"is_deleted\": false,\n        \"date\": \"2024-04-15T16:09:48.306Z\",\n        \"items\": [\n            {\n                \"id\": 8,\n                \"order_id\": 6,\n                \"product_id\": 22,\n                \"quantity\": 1,\n                \"price_per_unit\": 113142\n            },\n            {\n                \"id\": 9,\n                \"order_id\": 6,\n                \"product_id\": 24,\n                \"quantity\": 5,\n                \"price_per_unit\": 321892\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Error: Required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/create",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"af-/SwMqc5LrSUSI/8ZT5AYNPuKbsA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:10:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"customer_name\": \"customer_name is a required field\",\n        \"customer_address\": \"customer_address is a required field\",\n        \"items\": \"items is a required field\"\n    }\n}"
+						},
+						{
+							"name": "Error: Item General",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[],\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/create",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-uDOjkZeqMBH2eTsAmiHzwb89yUc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:11:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"items\": \"items field must have at least 1 items\"\n    }\n}"
+						},
+						{
+							"name": "Error: Item specific Index",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":222, \"id\":22}],\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/create",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-BxWQrnYnUpRUk5Yh1tk0DV1UQhE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:12:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"items[0]\": \"items quantity must be less than or equal to 10\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\":[{\"quantity\":1, \"id\":22}, {\"quantity\":3, \"id\":24}], // 1 < qantity <= 10 and id > 0\r\n    \"customer_address\": \"address is changed\",\r\n    \"customer_name\": \"MO Kiani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/orders/edit/8",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"orders",
+								"edit",
+								"8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error: Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":1, \"id\":22},{\"quantity\": 5, \"id\":23}], // 1 < qantity <= 10 and id > 0\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/7222",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"7222"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-21AfwUQvZgnmMEWegUw+6W6IokE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:44:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"general\": \"Record Not Found\"\n    }\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":1, \"id\":22}], // 1 < qantity <= 10 and id > 0\r\n    \"customer_address\": \"address is changed\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-69JczOPwNjhZsf8bYjiYKkyBXnA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:17:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"items[0]\": \"The selected item is out of stock\"\n    }\n}"
+						},
+						{
+							"name": "Error: Required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"af-/SwMqc5LrSUSI/8ZT5AYNPuKbsA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:10:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"customer_name\": \"customer_name is a required field\",\n        \"customer_address\": \"customer_address is a required field\",\n        \"items\": \"items is a required field\"\n    }\n}"
+						},
+						{
+							"name": "Error: Item General",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[],\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-uDOjkZeqMBH2eTsAmiHzwb89yUc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:11:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"items\": \"items field must have at least 1 items\"\n    }\n}"
+						},
+						{
+							"name": "Error: Item specific Index",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":222, \"id\":22}],\r\n    \"customer_address\": \"address\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-BxWQrnYnUpRUk5Yh1tk0DV1UQhE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 16:12:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"items[0]\": \"items quantity must be less than or equal to 10\"\n    }\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[{\"quantity\":1, \"id\":22}], // 1 < qantity <= 10 and id > 0\r\n    \"customer_address\": \"address is changed\",\r\n    \"customer_name\": \"Nima Poorali\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/edit/9",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"edit",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "295"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"127-uJAtJ80kyhbHqwjZPw+0XFiTrHs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 10:29:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"The order has successfully updated\",\n    \"order\": {\n        \"id\": 9,\n        \"customer_name\": \"Nima Poorali\",\n        \"customer_address\": \"address is changed\",\n        \"is_deleted\": false,\n        \"date\": \"2024-04-16T10:29:15.550Z\",\n        \"items\": [\n            {\n                \"id\": 100,\n                \"order_id\": 9,\n                \"product_id\": 22,\n                \"quantity\": 1,\n                \"price_per_unit\": 113142\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/orders?search=qwdqwdqdwq",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "qwdqwdqdwq"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-i5W56vrftGrj4Ht495NZJcgpOXE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:45:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"orders\": [\n        {\n            \"id\": 7,\n            \"customer_name\": \"Nima Poorali\",\n            \"customer_address\": \"address is changed\",\n            \"is_deleted\": false,\n            \"date\": \"2024-04-15T16:29:13.780Z\",\n            \"items\": [\n                {\n                    \"id\": 95,\n                    \"order_id\": 7,\n                    \"product_id\": 22,\n                    \"quantity\": 1,\n                    \"price_per_unit\": 113142\n                }\n            ]\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"perPage\": 10,\n        \"totalPages\": 1\n    }\n}"
+						},
+						{
+							"name": "Success: with params",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders?page=1&search=NiMa",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "search",
+											"value": "NiMa"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"137-OIjWF3Q9W3Qa2tKVFI3vHM81Iao\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:43:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"orders\": [\n        {\n            \"id\": 7,\n            \"customer_name\": \"Nima Poorali\",\n            \"customer_address\": \"address is changed\",\n            \"is_deleted\": false,\n            \"date\": \"2024-04-15T16:29:13.780Z\",\n            \"items\": [\n                {\n                    \"id\": 95,\n                    \"order_id\": 7,\n                    \"product_id\": 22,\n                    \"quantity\": 1,\n                    \"price_per_unit\": 113142\n                }\n            ]\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": \"1\",\n        \"perPage\": 10,\n        \"totalPages\": 1\n    }\n}"
+						},
+						{
+							"name": "Success: empty",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders?page=10",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-B4oktkY4SZvPqgu+OlPOJJhMOiE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:44:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"orders\": [],\n    \"pagination\": {\n        \"currentPage\": \"10\",\n        \"perPage\": 10,\n        \"totalPages\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "View",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/orders/10",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"orders",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "247"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f7-euULUcTvwAC8bHrMjYbDXO9RlSQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:49:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"order\": {\n        \"id\": 7,\n        \"customer_name\": \"Nima Poorali\",\n        \"customer_address\": \"address is changed\",\n        \"is_deleted\": false,\n        \"date\": \"2024-04-15T16:29:13.780Z\",\n        \"items\": [\n            {\n                \"id\": 95,\n                \"order_id\": 7,\n                \"product_id\": 22,\n                \"quantity\": 1,\n                \"price_per_unit\": 113142\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Error: Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/10",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"10"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-21AfwUQvZgnmMEWegUw+6W6IokE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:50:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"general\": \"Record Not Found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/orders/7",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"orders",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error: Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/10",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"10"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-21AfwUQvZgnmMEWegUw+6W6IokE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 09:55:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"general\": \"Record Not Found\"\n    }\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/orders/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"orders",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-N8QMY2a7oLT5/uY69PhJEIWpa7E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 10:19:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"order\": {\n        \"id\": 7,\n        \"customer_name\": \"Nima Poorali\",\n        \"customer_address\": \"address is changed\",\n        \"is_deleted\": true,\n        \"date\": \"2024-04-15T16:29:13.780Z\",\n        \"items\": [\n            {\n                \"id\": 95,\n                \"order_id\": 7,\n                \"product_id\": 22,\n                \"quantity\": 1,\n                \"price_per_unit\": 113142\n            }\n        ]\n    },\n    \"message\": \"The order has successfully deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"orders\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error: Required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-rsOnQY4dcKBz6UTAiuarszVwLhM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Apr 2024 11:20:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"username\": \"username is a required field\",\n        \"password\": \"password is a required field\"\n    }\n}"
+						},
+						{
+							"name": "Error: Invalid Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"emailinvaliwdgmqwdqwdail.com\",\r\n    \"password\": \"emailinvalid@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-TvoES4Jaq4LuKXkOqp6/IykpBVo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Apr 2024 11:29:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"email\": \"email must be a valid email\"\n    }\n}"
+						},
+						{
+							"name": "Error: Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"emailinvalid@gmail.com\",\r\n    \"password\": \"emailinvalid@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-7ivAXe89NSuD7FbJQU9GH+QrSPg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Apr 2024 11:28:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"password\": \"Invalid username or password\"\n    }\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"orders\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"101-xlSakqPkk47IeBvDNjT2ZggUHOU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Apr 2024 11:30:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Orders API V1\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJvcmRlcnMiLCJpYXQiOjE3MTM2MTI2NDQsImV4cCI6MTcxMzYxNjI0NH0.Pe1jXs2WELk1-E3VWdUzIsjk67CoZ2PUvTXfD2xrYnw\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJvcmRlcnMiLCJpYXQiOjE3MTM2MTM0NTIsImV4cCI6MTcxMzYxNzA1Mn0.JrBUBfUbSVJAgjT2j5iOsM4JrnbXqFwP6cEw-ywxtr4"
+		},
+		{
+			"key": "apiToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJvcmRlcnMiLCJpYXQiOjE3MTM2MTM2MjEsImV4cCI6MTcxNDIxODQyMX0.iCsvUtu2kXn877beovY5zEIUbORRDyoERPcHPJJWI9g"
+		}
+	]
+}
