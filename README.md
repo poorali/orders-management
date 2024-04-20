@@ -13,6 +13,7 @@ A simple orders CRUD + PDF generator
 ## Features
 
 - Orders CRUD
+- Stock System & Validation
 - PDF generator
 - Live pdf viewer
 - JWT Authentication
