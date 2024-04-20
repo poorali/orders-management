@@ -6,5 +6,7 @@
   "OrdersCreateSuccess": "The order has successfully created",
   "OrdersEditSuccess": "The order has successfully updated",
   "OrdersDeleteSuccess": "The order has successfully deleted",
-  "NotFound": "Record Not Found"
+  "NotFound": "Record Not Found",
+  "InvalidUser": "Invalid username or password",
+  "AccessDenied": "Access denied to the selected route"
 }

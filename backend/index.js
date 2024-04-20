@@ -3,9 +3,12 @@ const cors = require('cors')
 const {lang} = require("./locales/messages");
 const {PrismaClient} = require("@prisma/client");
 const validate = require("./middlewares/yup");
+const auth = require("./middlewares/auth");
 const CreateRequest = require("./requests/orders/CreateRequest")
+const LoginRequest = require("./requests/auth/LoginRequest")
 const useOrderModel = require("./models/order")
 const corsConfig = require('./configs/cors')
+const jwt = require('jsonwebtoken');
 
 const order = useOrderModel()
 const app = express()
@@ -17,11 +20,20 @@ const port = 5000
 require('dotenv').config()
 
 const prisma = new PrismaClient()
+//Authentication Routes
+app.post('/login', validate(LoginRequest),(req, res) => {
+    const staticUser = {id:10, email: 'admin@admin.com', password: 'orders'}
+    if(req.body.email !== staticUser.email || req.body.password !== staticUser.password){
+        return res.status(400).json({status: 'error', errors: {password: lang('InvalidUser')}})
+    }
+    const token = jwt.sign(staticUser, process.env.TOKEN_SECRET, {expiresIn: process.env.TOKEN_EXPIRES});
+    return res.json({status:'success', message: lang('WelcomeMessage'), token})
+})
+app.use(auth)
 //Home Page Route
 app.get('/', (req, res) => {
     return res.json({message: lang('WelcomeMessage')})
 })
-
 //Get the list of products to show in orders create and edit
 app.get('/products', async (req, res) => {
     return res.json({
@@ -29,13 +41,11 @@ app.get('/products', async (req, res) => {
         products: await prisma.products.findMany({where: {stock:{not:{equals: 0}}}})
     })
 })
-
 //List of orders
 app.get('/orders', async(req, res) => {
     const orders = await order.getList(req.query?.search, req.query?.page)
     return res.json({...{status: 'success'},...orders})
 })
-
 //Create new order
 app.post('/orders/create', validate(CreateRequest), async (req, res) => {
     const savedOrder = await order.create(req.body)
@@ -45,7 +55,6 @@ app.post('/orders/create', validate(CreateRequest), async (req, res) => {
     }
     return res.json(savedOrder)
 })
-
 //Get the details of a specific order
 app.get('/orders/:id', async(req, res) => {
     const viewOrder = await prisma.orders.findUnique({
@@ -73,7 +82,6 @@ app.get('/orders/:id', async(req, res) => {
     }
     return res.json({status: 'success', order: viewOrder})
 })
-
 // Edits an order information
 app.post('/orders/edit/:id',validate(CreateRequest), async (req, res) => {
     //Get previous order to edit
@@ -89,8 +97,6 @@ app.post('/orders/edit/:id',validate(CreateRequest), async (req, res) => {
     }
     return res.json(prevOrder)
 })
-
-
 ///Deletes an order
 app.delete('/orders/:id', async(req, res) => {
     let deleteOrder = await prisma.orders.findUnique({where: {id: parseInt(req.params.id), is_deleted: false}, include: {items: true}})
